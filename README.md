@@ -62,7 +62,7 @@ This is where we don't let our Decoder be lazy and simply choose the words with 
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Use the package manager [pip](https://pip.pypa.io/en/stable/)
 
 ```bash
 pip install opencv-python
@@ -101,23 +101,26 @@ To install Pytorch follow: [Pytorch](https://pytorch.org/get-started/locally/)
 
 ```
 
-0. ```Script.ipynb : ```
+0. ```Script.ipynb : ``` This is more like a test notebook which has some project execution guidelines. It has some examples to get along with some unusual lines of code in the project.
 
-1. ```create_input_files.py : ```
+1. ```create_input_files.py : ``` This file is responsible for creating input files for training, validation, and test data. Now this file could take any of these data sets 'coco', 'flickr8k', 'flickr30k' along with the json files for that particular dataset. The JSON file contains captions along with info as to which caption is associated with which image. It stores the data along with its respective splits(train, test, validation),and the wordmaps(mapping captions to images) into the ```data_output``` folder.
+**You need to run this file to prepare your data.**
 
-2. ```datasets.py : ```
+2. ```datasets.py : ``` This file simply has the code to create a custom Pytorch Dataset that would later be used by the data generators.
 
-3. ```models.py : ```
+3. ```models.py : ``` This is where you define your models (Encoder, Decoder, Attention mechanism). The Encoder is a pretrained Resnet101 on the 'ImageNet' dataset. The classification layers are detached as it is simply used for feature extraction. The Attention Network will provide a focused encoded image at every time step which would be given as input along with the word embedding of a caption to an LSTM cell. The Decoder comprises of LSTM's that finally map its output to a probability distribution of words from the vocabulary using a Fully connected layer.
 
-4. ```train.py : ```
+4. ```train.py : ``` This is a driver file for simply training and validating the dataset. The final output would be a Trained Model Checkpoint which could later be used for predicting. If you don't have the resource capabilities for training on your own system you could also download the pre-trained weights for this model which was trained on the COCO dataset from [here](https://drive.google.com/open?id=189VY65I_n4RTpQnmLGj7IzVnOF6dmePC).
 
-5. ```evaluate.py : ```
+5. ```evaluate.py : ``` This file is simply for testing the model and getting a BLEU score for it.
 
-6. ```caption.py : ```
+6. ```caption.py : ``` This file is a complete pipeline between inputting an image to finally captioning it.
 
 
 
 ## Usage
+
+```python caption.py --img='images/child_playing_soccer.jpg' --model='BEST_checkpoint_coco_5_cap_per_img_5_min_word_freq.pth.tar' --word_map='data_output/WORDMAP_coco_5_cap_per_img_5_min_word_freq.json' --beam_size=5```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
