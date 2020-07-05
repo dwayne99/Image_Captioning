@@ -121,9 +121,19 @@ To install Pytorch follow: [Pytorch](https://pytorch.org/get-started/locally/)
 ## Usage
 
 ```python caption.py --img='images/child_playing_soccer.jpg' --model='BEST_checkpoint_coco_5_cap_per_img_5_min_word_freq.pth.tar' --word_map='data_output/WORDMAP_coco_5_cap_per_img_5_min_word_freq.json' --beam_size=5```
+<p align="center">
+  <img width="400" height="250" src="extras/output.png">
+</p>
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## Acknowledgements
 
+[Image Captioning in Deep Learning](https://towardsdatascience.com/image-captioning-in-deep-learning-9cd23fb4d8d2) by Pranoy Radhakrishnan
+
+Sagar Vinodababu has an amazing tutorial on Image-captioning do check it out [here](https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Image-Captioning)
+
+[Beam Search](https://www.youtube.com/watch?v=RLWuzLLSIgw) Lecture by Andrew Ng 
+
+[Attention Mechanism](https://www.youtube.com/watch?v=SysgYptB198) Lecture by Andrew Ng 
